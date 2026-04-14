@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getProducts } from "../services/api";
 import { useStore } from "../store/useStore";
+import { getProducts } from "../api/client";
 
 export default function ProductPanel() {
   const [products, setProducts] = useState([]);
@@ -11,26 +11,11 @@ export default function ProductPanel() {
   }, []);
 
   return (
-    <div style={{
-      position: "absolute",
-      bottom: 10,
-      left: 10,
-      background: "rgba(0,0,0,0.6)",
-      padding: 10,
-      color: "white"
-    }}>
+    <div style={{ position:"absolute", bottom:20, left:20, background:"#fff", padding:10 }}>
       {products.map(p => (
-        <div key={p.id}>
-          <b>{p.name}</b>
-
-          <button onClick={() => setProduct(p.type, p)}>
-            Try
-          </button>
-
-          <a href={p.url} target="_blank">
-            Buy
-          </a>
-        </div>
+        <button key={p.id} onClick={() => setProduct(p.type, p)}>
+          {p.name}
+        </button>
       ))}
     </div>
   );
