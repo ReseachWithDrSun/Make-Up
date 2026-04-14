@@ -1,10 +1,18 @@
 import { create } from "zustand";
 
 export const useStore = create(set => ({
-  currentLook: {},
+  look: {
+    lipstick: null,
+    eyeshadow: null,
+    blush: null,
+    foundation: null
+  },
 
   setProduct: (type, product) =>
     set(state => ({
-      currentLook: { ...state.currentLook, [type]: product }
+      look: {
+        ...state.look,
+        [type]: product
+      }
     }))
 }));
